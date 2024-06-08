@@ -3,8 +3,8 @@ import { FormValue } from '@/type';
 // フォームの初期値
 export const initialFormValue: FormValue = {
   department: '',
-  name: '',
-  item: '',
+  name: '佐藤 太郎',
+  item: '一金 五千円',
 };
 
 // 納品物のリスト
