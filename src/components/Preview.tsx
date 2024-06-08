@@ -43,7 +43,7 @@ export function Preview(props: PreviewProps) {
       <div className={clsx('w-[35%] flex items-center justify-start', styles.text)}>
         {formValue.item && <>{formValue.item}也</>}
       </div>
-      <div className={clsx('w-[30%] flex items-start justify-end')}>
+      <div className={clsx('w-[28%] flex items-start justify-end mt-5')}>
         <img src={noshiImage} alt="のし" className="w-1/2" />
       </div>
     </div>
