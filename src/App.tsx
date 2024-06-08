@@ -18,6 +18,9 @@ function App() {
   const handleItemClick = (value: string) => {
     setFormValue((prev) => ({ ...prev, ['item']: value }));
   };
+  const handlePrintClick = () => {
+    window.print();
+  };
 
   return (
     <div className="p-2 h-screen">
@@ -79,7 +82,9 @@ function App() {
               明朝体を利用する
             </label>
           </div>
-          <Button className="w-full">印刷</Button>
+          <Button className="w-full" onClick={handlePrintClick}>
+            印刷
+          </Button>
         </div>
       </div>
     </div>

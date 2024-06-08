@@ -1,7 +1,7 @@
 [package]
-name = "tauri-app"
+name = "NoshiGenerator"
 version = "0.0.0"
-description = "A Tauri App"
+description = "のしを作成するアプリケーション"
 authors = ["you"]
 edition = "2021"
 

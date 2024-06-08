@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "tauri-app",
+    "productName": "NoshiGenerator",
     "version": "0.0.0"
   },
   "tauri": {
@@ -19,7 +19,7 @@
     },
     "windows": [
       {
-        "title": "tauri-app",
+        "title": "NoshiGenerator",
         "width": 1100,
         "height": 1100
       }
@@ -30,7 +30,7 @@
     "bundle": {
       "active": true,
       "targets": "all",
-      "identifier": "net.remicck.sample-tauri",
+      "identifier": "net.remicck.noshigenerator",
       "icon": [
         "icons/32x32.png",
         "icons/128x128.png",
