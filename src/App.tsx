@@ -5,6 +5,7 @@ import { ItemList, initialFormValue } from '@/const';
 import { ItemButton } from '@/components/ui/ItemButton';
 import { useEffect, useState } from 'react';
 import { FormValue } from '@/type';
+import { Preview } from '@/components/Preview';
 
 function App() {
   const [formValue, setFormValue] = useState<FormValue>(initialFormValue);
@@ -15,15 +16,12 @@ function App() {
     setFormValue((prev) => ({ ...prev, ['item']: value }));
   };
 
-  useEffect(() => {
-    console.log(formValue);
-  }, [formValue]);
   return (
     <div className="p-2 h-screen">
       <div className="grid grid-cols-4 gap-2 min-h-full">
         {/* Left:: preview */}
-        <div className="col-span-3 rounded-lg bg-slate-50">
-          <h1>Preview</h1>
+        <div className="col-span-3 flex justify-center items-center rounded-lg bg-slate-50 p-2">
+          <Preview formValue={formValue} />
         </div>
         {/* Right: Input */}
         <div className="min-h-full flex flex-col gap-4">
