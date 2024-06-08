@@ -1,0 +1,21 @@
+.wrap {
+  aspect-ratio: 1 / 1.414;
+  width: 90%;
+
+  border: solid 1px #ddd;
+}
+
+.text {
+  writing-mode: vertical-rl;
+  font-size: 8rem;
+  font-family: 'YujiSyuku-Regular';
+}
+
+.smallText {
+  font-size: 5rem;
+}
+
+.mincho {
+  font-family: 'Yu Mincho';
+  font-weight: bold;
+}
