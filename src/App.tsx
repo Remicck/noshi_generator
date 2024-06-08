@@ -46,7 +46,7 @@ function App() {
             />
           </div>
           <div>
-            <Label>納品（例：）</Label>
+            <Label>納品</Label>
             <Input
               type="text"
               onChange={(e) => handleChangeFormValue('item', e)}
