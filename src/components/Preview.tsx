@@ -9,7 +9,6 @@ type PreviewProps = {
 };
 export function Preview(props: PreviewProps) {
   const { formValue, forceMincho } = props;
-  console.log(formValue);
   return (
     <div id="printableArea" className={clsx(styles.wrap, 'bg-white p-2 flex flex-row flex-nowrap')}>
       <div
