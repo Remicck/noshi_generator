@@ -5,13 +5,20 @@ import noshiImage from '@/assets/noshi.png';
 
 type PreviewProps = {
   formValue: FormValue;
+  forceMincho: boolean;
 };
 export function Preview(props: PreviewProps) {
-  const { formValue } = props;
+  const { formValue, forceMincho } = props;
   console.log(formValue);
   return (
     <div className={clsx(styles.wrap, 'bg-white p-2 flex flex-row flex-nowrap')}>
-      <div className={clsx('w-[35%] flex items-center justify-start mt-[40px]', styles.text)}>
+      <div
+        className={clsx(
+          'w-[35%] flex items-center justify-start mt-[40px]',
+          styles.text,
+          forceMincho && styles.mincho
+        )}
+      >
         {formValue.name ? (
           <>
             {formValue.department ? (

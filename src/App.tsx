@@ -7,9 +7,11 @@ import { useState } from 'react';
 import { FormValue } from '@/type';
 import { Preview } from '@/components/Preview';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 
 function App() {
   const [formValue, setFormValue] = useState<FormValue>(initialFormValue);
+  const [forceMincho, setForceMincho] = useState<boolean>(false);
   const handleChangeFormValue = (key: keyof FormValue, e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValue((prev) => ({ ...prev, [key]: e.target.value }));
   };
@@ -22,7 +24,7 @@ function App() {
       <div className="grid grid-cols-4 gap-2 min-h-full">
         {/* Left:: preview */}
         <div className="col-span-3 flex justify-center items-center rounded-lg bg-slate-50 p-2">
-          <Preview formValue={formValue} />
+          <Preview formValue={formValue} forceMincho={forceMincho} />
         </div>
         {/* Right: Input */}
         <div className="h-full flex flex-col gap-4">
@@ -62,6 +64,20 @@ function App() {
                 })}
               </div>
             </div>
+          </div>
+          <div className="flex flex-row gap-2">
+            <Checkbox
+              id="force-mincho-flg"
+              onCheckedChange={(checked: boolean) => {
+                setForceMincho(checked);
+              }}
+            />
+            <label
+              htmlFor="force-mincho-flg"
+              className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
+            >
+              明朝体を利用する
+            </label>
           </div>
           <Button className="w-full">印刷</Button>
         </div>
