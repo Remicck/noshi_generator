@@ -1,0 +1,15 @@
+node_modules
+build
+.next
+pnpm-lock.yaml
+bitbucket-pipelines.yml
+playwright-report
+
+# editor
+.vscode/snipsnap.code-snippets
+
+# ci
+.pnpm-store
+
+# tauri
+src-tauri/target/*
