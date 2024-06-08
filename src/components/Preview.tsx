@@ -14,7 +14,7 @@ export function Preview(props: PreviewProps) {
     <div className={clsx(styles.wrap, 'bg-white p-2 flex flex-row flex-nowrap')}>
       <div
         className={clsx(
-          'w-[35%] flex items-center justify-start mt-[40px]',
+          'w-[35%] flex items-center justify-start mt-[40px] mb-[20px]',
           styles.text,
           forceMincho && styles.mincho
         )}
