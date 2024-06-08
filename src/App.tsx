@@ -3,7 +3,7 @@ import '@/App.scss';
 import { Label } from '@/components/ui/label';
 import { ItemList, initialFormValue } from '@/const';
 import { ItemButton } from '@/components/ui/ItemButton';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FormValue } from '@/type';
 import { Preview } from '@/components/Preview';
 
