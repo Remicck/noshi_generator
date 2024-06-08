@@ -6,6 +6,7 @@ import { ItemButton } from '@/components/ui/ItemButton';
 import { useState } from 'react';
 import { FormValue } from '@/type';
 import { Preview } from '@/components/Preview';
+import { Button } from '@/components/ui/button';
 
 function App() {
   const [formValue, setFormValue] = useState<FormValue>(initialFormValue);
@@ -24,7 +25,7 @@ function App() {
           <Preview formValue={formValue} />
         </div>
         {/* Right: Input */}
-        <div className="min-h-full flex flex-col gap-4">
+        <div className="h-full flex flex-col gap-4">
           <h2>入力</h2>
           <div>
             <Label>所属（空欄可）</Label>
@@ -62,6 +63,7 @@ function App() {
               </div>
             </div>
           </div>
+          <Button className="w-full">印刷</Button>
         </div>
       </div>
     </div>
