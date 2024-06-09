@@ -28,8 +28,8 @@ export function Preview(props: PreviewProps) {
                 )}
               >
                 <div className="flex flex-col">
-                  <div>{formValue.department}</div>
-                  <div className="pt-10">{formValue.name}</div>
+                  <div className="pb-10">{formValue.department}</div>
+                  <div className="text-right">{formValue.name}</div>
                 </div>
                 <div>様</div>
               </div>
