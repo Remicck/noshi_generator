@@ -1,6 +1,6 @@
 # 熨斗ジェネレーター
 
-![image](https://github.com/Remicck/noshi_generator/assets/3492320/a7ed3b43-9406-4c40-8fda-f71892587488)
+![image](https://github.com/Remicck/noshi_generator/assets/3492320/0fc5ec5a-91d2-4686-a320-ba52b0972244)
 
 熨斗ジェネレーターは、夏祭りなどで使用される熨斗を生成するための簡単なジェネレーターです。このアプリケーションはTauriを使用して構築されており、Windows、Mac、およびLinuxで動作します。
 
