@@ -81,7 +81,11 @@ function App() {
                   htmlFor="force-mincho-flg"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
                 >
-                  明朝体を利用する
+                  名前部分に明朝体を利用する
+                  <br />
+                  <span className="font-normal">
+                    ※毛筆フォントで漢字が見つからない場合に利用ください
+                  </span>
                 </label>
               </div>
             </div>
