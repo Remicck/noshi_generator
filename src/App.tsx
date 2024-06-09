@@ -32,7 +32,7 @@ function App() {
           </div>
           {/* Right: Input */}
           <div className="h-full flex flex-col gap-4 bg-white p-2 rounded-lg">
-            <h2>入力</h2>
+            <h2 className="font-bold">入力スペース</h2>
             <div>
               <Label>所属（空欄可）</Label>
               <Input
@@ -69,19 +69,21 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-row gap-2">
-              <Checkbox
-                id="force-mincho-flg"
-                onCheckedChange={(checked: boolean) => {
-                  setForceMincho(checked);
-                }}
-              />
-              <label
-                htmlFor="force-mincho-flg"
-                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
-              >
-                明朝体を利用する
-              </label>
+            <div className="my-10 flex flex-col gap-4">
+              <div className="flex flex-row gap-2">
+                <Checkbox
+                  id="force-mincho-flg"
+                  onCheckedChange={(checked: boolean) => {
+                    setForceMincho(checked);
+                  }}
+                />
+                <label
+                  htmlFor="force-mincho-flg"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
+                >
+                  明朝体を利用する
+                </label>
+              </div>
             </div>
             <Button className="w-full" onClick={handlePrintClick}>
               印刷

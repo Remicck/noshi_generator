@@ -39,7 +39,7 @@ export function Preview(props: PreviewProps) {
           </>
         ) : null}
       </div>
-      <div className={clsx('w-[35%] flex items-center justify-start', styles.text)}>
+      <div className={clsx('w-[35%] flex items-center justify-start', styles.nouhinText)}>
         {formValue.item && <>{formValue.item}也</>}
       </div>
       <div className={clsx('w-[28%] flex items-start justify-end mt-5')}>
