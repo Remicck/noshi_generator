@@ -1,8 +1,8 @@
-# Noshi Generator
+# 熨斗ジェネレーター
 
 ![image](https://github.com/Remicck/noshi_generator/assets/3492320/f5bcc910-6f33-438b-acb8-78c2510ae1ae)
 
-Noshi Generatorは、NASアプリケーションで使用されるNoshiを生成するための簡単なジェネレーターです。このアプリケーションはTauriを使用して構築されており、Windows、Mac、およびLinuxで動作します。
+熨斗ジェネレーターは、NASアプリケーションで使用される熨斗を生成するための簡単なジェネレーターです。このアプリケーションはTauriを使用して構築されており、Windows、Mac、およびLinuxで動作します。
 
 ## 特徴
 
