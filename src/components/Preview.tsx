@@ -2,6 +2,7 @@ import { FormValue } from '@/type';
 import styles from './Preview.module.scss';
 import clsx from 'clsx';
 import noshiImage from '@/assets/noshi.png';
+import { ichikinFormat } from '@/lib/formatter';
 
 type PreviewProps = {
   formValue: FormValue;
@@ -40,7 +41,7 @@ export function Preview(props: PreviewProps) {
         ) : null}
       </div>
       <div className={clsx('w-[35%] flex items-center justify-start', styles.nouhinText)}>
-        {formValue.item && <>{formValue.item}也</>}
+        {formValue.item && <>{ichikinFormat(formValue.item)}也</>}
       </div>
       <div className={clsx('w-[28%] flex items-start justify-end mt-5')}>
         <img src={noshiImage} alt="のし" className="w-1/2" />
