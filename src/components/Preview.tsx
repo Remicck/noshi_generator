@@ -7,9 +7,10 @@ import { ichikinFormat } from '@/lib/formatter';
 type PreviewProps = {
   formValue: FormValue;
   forceMincho: boolean;
+  disableBackground: boolean;
 };
 export function Preview(props: PreviewProps) {
-  const { formValue, forceMincho } = props;
+  const { formValue, forceMincho, disableBackground } = props;
   return (
     <div id="printableArea" className={clsx(styles.wrap, 'bg-white p-2 flex flex-row flex-nowrap')}>
       <div
@@ -43,7 +44,12 @@ export function Preview(props: PreviewProps) {
       <div className={clsx('w-[35%] flex items-center justify-start', styles.nouhinText)}>
         {formValue.item && <>{ichikinFormat(formValue.item)}也</>}
       </div>
-      <div className={clsx('w-[28%] flex items-start justify-end mt-5')}>
+      <div
+        className={clsx(
+          'w-[28%] flex items-start justify-end mt-5',
+          disableBackground && 'opacity-0'
+        )}
+      >
         <img src={noshiImage} alt="のし" className="w-1/2" />
       </div>
     </div>
