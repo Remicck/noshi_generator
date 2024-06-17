@@ -12,6 +12,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 function App() {
   const [formValue, setFormValue] = useState<FormValue>(initialFormValue);
   const [forceMincho, setForceMincho] = useState<boolean>(false);
+  const [disableBackground, setDisableBackground] = useState<boolean>(false);
   const handleChangeFormValue = (key: keyof FormValue, e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValue((prev) => ({ ...prev, [key]: e.target.value }));
   };
@@ -28,7 +29,11 @@ function App() {
         <div className="grid grid-cols-4 gap-2 min-h-full">
           {/* Left:: preview */}
           <div className="col-span-3 flex justify-center items-center rounded-lg p-2">
-            <Preview formValue={formValue} forceMincho={forceMincho} />
+            <Preview
+              formValue={formValue}
+              forceMincho={forceMincho}
+              disableBackground={disableBackground}
+            />
           </div>
           {/* Right: Input */}
           <div className="h-full flex flex-col gap-4 bg-white p-2 rounded-lg">
@@ -69,7 +74,7 @@ function App() {
                 </div>
               </div>
             </div>
-            <div className="my-10 flex flex-col gap-4">
+            <div className="my-4 flex flex-col gap-4">
               <div className="flex flex-row gap-2">
                 <Checkbox
                   id="force-mincho-flg"
@@ -86,6 +91,20 @@ function App() {
                   <span className="font-normal">
                     ※毛筆フォントで漢字が見つからない場合に利用ください
                   </span>
+                </label>
+              </div>
+              <div className="flex flex-row gap-2">
+                <Checkbox
+                  id="disable-background-flg"
+                  onCheckedChange={(checked: boolean) => {
+                    setDisableBackground(checked);
+                  }}
+                />
+                <label
+                  htmlFor="disable-background-flg"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
+                >
+                  背景を印刷に含めない
                 </label>
               </div>
             </div>
