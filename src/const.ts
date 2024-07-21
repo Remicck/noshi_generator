@@ -4,8 +4,8 @@ import { FormValue } from '@/type';
 export const initialFormValue: FormValue = {
   department: '',
   name: '佐藤 太郎',
-  item: '一、金 五千円',
+  item: '一、金 五千円也',
 };
 
 // 納品物のリスト
-export const ItemList: string[] = ['一、金 五千円', '一、金 壱万円', '清酒 一本', '焼酎 一本'];
+export const ItemList: string[] = ['一、金 五千円也', '一、金 壱万円也', '清酒 一本', '焼酎 一本'];
