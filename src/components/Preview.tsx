@@ -42,7 +42,7 @@ export function Preview(props: PreviewProps) {
         ) : null}
       </div>
       <div className={clsx('w-[35%] flex items-center justify-start', styles.nouhinText)}>
-        {formValue.item && <>{ichikinFormat(formValue.item)}也</>}
+        {formValue.item && <>{ichikinFormat(formValue.item)}</>}
       </div>
       <div
         className={clsx(
