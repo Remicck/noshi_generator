@@ -18,7 +18,7 @@
   },
   "productName": "NoshiGenerator",
   "mainBinaryName": "NoshiGenerator",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "identifier": "net.remicck.noshigenerator",
   "plugins": {},
   "app": {
