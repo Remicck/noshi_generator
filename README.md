@@ -14,3 +14,52 @@
 
 リリースページから環境に合わせたインストーラーをダウンロードしてください
 [Releases · Remicck/noshi_generator](https://github.com/Remicck/noshi_generator/releases)
+
+## 開発環境のセットアップ
+
+### 必要な環境
+
+- Node.js (v18以上推奨)
+- pnpm (パッケージマネージャー)
+- Rust (Tauriのビルドに必要)
+
+### セットアップ手順
+
+1. リポジトリをクローン
+```bash
+git clone https://github.com/Remicck/noshi_generator.git
+cd noshi_generator
+```
+
+2. 依存関係をインストール
+```bash
+pnpm install
+```
+
+3. 開発サーバーを起動
+```bash
+pnpm run tauri dev
+```
+
+### ビルド方法
+
+アプリケーションをビルドする場合:
+```bash
+pnpm run tauri build
+```
+
+### その他の開発コマンド
+
+```bash
+# フロントエンドのみの開発サーバー
+pnpm run dev
+
+# TypeScriptとViteのビルド
+pnpm run build
+
+# Lintの実行
+pnpm run lint
+
+# コードのフォーマット
+pnpm run format
+```
