@@ -15,7 +15,7 @@ export function ichikinFormat(str: string): JSX.Element | string {
   return str;
 }
 
-function formatNumber(str: string): JSX.Element {
+export function formatNumber(str: string): JSX.Element {
   // 半角数字の場合は、90度回転させて表示する
   return (
     <>
