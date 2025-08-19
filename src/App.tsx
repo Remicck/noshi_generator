@@ -12,6 +12,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 function App() {
   const [formValue, setFormValue] = useState<FormValue>(initialFormValue);
   const [forceMincho, setForceMincho] = useState<boolean>(false);
+  const [disableSama, setDisableSama] = useState<boolean>(false);
   const [disableBackground, setDisableBackground] = useState<boolean>(false);
   const handleChangeFormValue = (key: keyof FormValue, e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValue((prev) => ({ ...prev, [key]: e.target.value }));
@@ -32,6 +33,7 @@ function App() {
             <Preview
               formValue={formValue}
               forceMincho={forceMincho}
+              disableSama={disableSama}
               disableBackground={disableBackground}
             />
           </div>
@@ -53,6 +55,20 @@ function App() {
                 onChange={(e) => handleChangeFormValue('name', e)}
                 value={formValue.name}
               />
+              <div className="flex flex-row gap-2 mt-2">
+                <Checkbox
+                  id="disable-sama-flg"
+                  onCheckedChange={(checked: boolean) => {
+                    setDisableSama(checked);
+                  }}
+                />
+                <label
+                  htmlFor="disable-sama-flg"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
+                >
+                  様を表示しない
+                </label>
+              </div>
             </div>
             <div>
               <Label>納品</Label>

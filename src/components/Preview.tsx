@@ -2,15 +2,16 @@ import { FormValue } from '@/type';
 import styles from './Preview.module.scss';
 import clsx from 'clsx';
 import noshiImage from '@/assets/noshi.png';
-import { ichikinFormat } from '@/lib/formatter';
+import { formatNumber, ichikinFormat } from '@/lib/formatter';
 
 type PreviewProps = {
   formValue: FormValue;
   forceMincho: boolean;
+  disableSama: boolean;
   disableBackground: boolean;
 };
 export function Preview(props: PreviewProps) {
-  const { formValue, forceMincho, disableBackground } = props;
+  const { formValue, forceMincho, disableSama, disableBackground } = props;
   return (
     <div id="printableArea" className={clsx(styles.wrap, 'bg-white p-2 flex flex-row flex-nowrap')}>
       <div
@@ -33,10 +34,13 @@ export function Preview(props: PreviewProps) {
                   <div className="pb-10">{formValue.department}</div>
                   <div className="text-right">{formValue.name}</div>
                 </div>
-                <div>様</div>
+                {!disableSama && <div>様</div>}
               </div>
             ) : (
-              <div className="flex justify-end h-full">{formValue.name}様</div>
+              <div className="flex justify-end h-full">
+                {formatNumber(formValue.name)}
+                {!disableSama && <div>様</div>}
+              </div>
             )}
           </>
         ) : null}
