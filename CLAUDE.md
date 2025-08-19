@@ -25,12 +25,14 @@ pnpm run format      # Fix ESLint issues + Prettier formatting
 ## Architecture
 
 ### Tech Stack
+
 - **Frontend**: React 18 + TypeScript + Vite
 - **Styling**: Tailwind CSS + SCSS modules
 - **Desktop Framework**: Tauri v2
 - **UI Components**: Radix UI primitives with custom styling
 
 ### Key Directories
+
 - `/src` - React frontend application
   - `/components` - React components including Preview and UI primitives
   - `/lib` - Utility functions and formatters
@@ -40,6 +42,7 @@ pnpm run format      # Fix ESLint issues + Prettier formatting
   - `tauri.conf.json` - Tauri configuration
 
 ### Important Files
+
 - `src/App.tsx` - Main application component with form and print logic
 - `src/components/Preview.tsx` - Noshi preview component with print styling
 - `src/const.ts` - Constants including item templates

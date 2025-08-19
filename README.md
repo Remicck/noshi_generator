@@ -26,17 +26,20 @@
 ### セットアップ手順
 
 1. リポジトリをクローン
+
 ```bash
 git clone https://github.com/Remicck/noshi_generator.git
 cd noshi_generator
 ```
 
 2. 依存関係をインストール
+
 ```bash
 pnpm install
 ```
 
 3. 開発サーバーを起動
+
 ```bash
 pnpm run tauri dev
 ```
@@ -44,6 +47,7 @@ pnpm run tauri dev
 ### ビルド方法
 
 アプリケーションをビルドする場合:
+
 ```bash
 pnpm run tauri build
 ```
