@@ -9,9 +9,20 @@ type PreviewProps = {
   forceMincho: boolean;
   disableSama: boolean;
   disableBackground: boolean;
+  verticalNumber: boolean;
+  nameFontSize: number;
+  itemFontSize: number;
 };
 export function Preview(props: PreviewProps) {
-  const { formValue, forceMincho, disableSama, disableBackground } = props;
+  const {
+    formValue,
+    forceMincho,
+    disableSama,
+    disableBackground,
+    verticalNumber,
+    nameFontSize,
+    itemFontSize,
+  } = props;
   return (
     <div id="printableArea" className={clsx(styles.wrap, 'bg-white p-2 flex flex-row flex-nowrap')}>
       <div
@@ -20,6 +31,7 @@ export function Preview(props: PreviewProps) {
           styles.text,
           forceMincho && styles.mincho
         )}
+        style={{ fontSize: `${nameFontSize}rem` }}
       >
         {formValue.name ? (
           <>
@@ -45,8 +57,11 @@ export function Preview(props: PreviewProps) {
           </>
         ) : null}
       </div>
-      <div className={clsx('w-[35%] flex items-center justify-start', styles.nouhinText)}>
-        {formValue.item && <>{ichikinFormat(formValue.item)}</>}
+      <div
+        className={clsx('w-[35%] flex items-center justify-start', styles.nouhinText)}
+        style={{ fontSize: `${itemFontSize}rem` }}
+      >
+        {formValue.item && <>{ichikinFormat(formValue.item, verticalNumber)}</>}
       </div>
       <div
         className={clsx(

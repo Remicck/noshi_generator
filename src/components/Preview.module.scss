@@ -4,24 +4,30 @@
   border: solid 1px #ddd;
 }
 
+// 筆文字を太く見せるための縁取り。塗り(fill)の外側に stroke を描く。
+$text-stroke: 1.5px rgba(0, 0, 0, 1);
+
 .nouhinText {
   writing-mode: vertical-rl;
-  font-size: 9rem;
+  font-size: 11rem;
   font-family: 'YujiSyuku-Regular';
+  -webkit-text-stroke: $text-stroke;
+  paint-order: stroke fill;
 }
 
 .text {
   writing-mode: vertical-rl;
-  font-size: 8rem;
+  font-size: 8rem; // 名前コンテナのインライン font-size(スライダー値)で上書きされる
   font-family: 'YujiSyuku-Regular';
+  -webkit-text-stroke: $text-stroke;
+  paint-order: stroke fill;
 }
 
 .smallText {
-  font-size: 5rem;
+  font-size: 0.625em; // 名前コンテナ font-size 基準 (8rem 時に 5rem 相当)
 }
 
 .mincho {
   font-family: 'Yu Mincho', 'YuMincho';
   font-weight: bold;
-  font-size: 7.8rem;
 }
