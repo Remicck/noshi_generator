@@ -1,19 +1,49 @@
 import { Input } from '@/components/ui/input';
 import '@/App.scss';
 import { Label } from '@/components/ui/label';
-import { ItemList, initialFormValue } from '@/const';
+import {
+  ItemList,
+  initialFormValue,
+  DEFAULT_NAME_FONT_SIZE,
+  DEFAULT_ITEM_FONT_SIZE,
+  DEFAULT_ICHIKIN_GAP,
+} from '@/const';
 import { ItemButton } from '@/components/ui/ItemButton';
-import { useState } from 'react';
 import { FormValue } from '@/type';
 import { Preview } from '@/components/Preview';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useLocalStorageState } from '@/lib/useLocalStorageState';
 
 function App() {
-  const [formValue, setFormValue] = useState<FormValue>(initialFormValue);
-  const [forceMincho, setForceMincho] = useState<boolean>(false);
-  const [disableSama, setDisableSama] = useState<boolean>(false);
-  const [disableBackground, setDisableBackground] = useState<boolean>(false);
+  // 設定値は localStorage に永続化し、リロードしても消えないようにする。
+  const [formValue, setFormValue] = useLocalStorageState<FormValue>(
+    'noshi:formValue',
+    initialFormValue
+  );
+  const [forceMincho, setForceMincho] = useLocalStorageState<boolean>('noshi:forceMincho', false);
+  const [disableSama, setDisableSama] = useLocalStorageState<boolean>('noshi:disableSama', false);
+  const [disableBackground, setDisableBackground] = useLocalStorageState<boolean>(
+    'noshi:disableBackground',
+    false
+  );
+  const [nameFontSize, setNameFontSize] = useLocalStorageState<number>(
+    'noshi:nameFontSize',
+    DEFAULT_NAME_FONT_SIZE
+  );
+  const [itemFontSize, setItemFontSize] = useLocalStorageState<number>(
+    'noshi:itemFontSize',
+    DEFAULT_ITEM_FONT_SIZE
+  );
+  const [ichikinGap, setIchikinGap] = useLocalStorageState<number>(
+    'noshi:ichikinGap',
+    DEFAULT_ICHIKIN_GAP
+  );
+  const handleResetSizes = () => {
+    setNameFontSize(DEFAULT_NAME_FONT_SIZE);
+    setItemFontSize(DEFAULT_ITEM_FONT_SIZE);
+    setIchikinGap(DEFAULT_ICHIKIN_GAP);
+  };
   const handleChangeFormValue = (key: keyof FormValue, e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValue((prev) => ({ ...prev, [key]: e.target.value }));
   };
@@ -35,6 +65,9 @@ function App() {
               forceMincho={forceMincho}
               disableSama={disableSama}
               disableBackground={disableBackground}
+              nameFontSize={nameFontSize}
+              itemFontSize={itemFontSize}
+              ichikinGap={ichikinGap}
             />
           </div>
           {/* Right: Input */}
@@ -58,6 +91,7 @@ function App() {
               <div className="flex flex-row gap-2 mt-2">
                 <Checkbox
                   id="disable-sama-flg"
+                  checked={disableSama}
                   onCheckedChange={(checked: boolean) => {
                     setDisableSama(checked);
                   }}
@@ -94,6 +128,7 @@ function App() {
               <div className="flex flex-row gap-2">
                 <Checkbox
                   id="force-mincho-flg"
+                  checked={forceMincho}
                   onCheckedChange={(checked: boolean) => {
                     setForceMincho(checked);
                   }}
@@ -112,6 +147,7 @@ function App() {
               <div className="flex flex-row gap-2">
                 <Checkbox
                   id="disable-background-flg"
+                  checked={disableBackground}
                   onCheckedChange={(checked: boolean) => {
                     setDisableBackground(checked);
                   }}
@@ -123,6 +159,63 @@ function App() {
                   背景を印刷に含めない
                 </label>
               </div>
+              <div className="flex flex-col gap-1">
+                <label
+                  htmlFor="name-font-size"
+                  className="text-sm font-medium leading-none select-none"
+                >
+                  名前の文字サイズ: {nameFontSize.toFixed(1)}rem
+                </label>
+                <input
+                  id="name-font-size"
+                  type="range"
+                  min={4}
+                  max={16}
+                  step={0.1}
+                  value={nameFontSize}
+                  onChange={(e) => setNameFontSize(Number(e.target.value))}
+                  className="w-full cursor-pointer"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label
+                  htmlFor="item-font-size"
+                  className="text-sm font-medium leading-none select-none"
+                >
+                  納品の文字サイズ: {itemFontSize.toFixed(1)}rem
+                </label>
+                <input
+                  id="item-font-size"
+                  type="range"
+                  min={4}
+                  max={16}
+                  step={0.1}
+                  value={itemFontSize}
+                  onChange={(e) => setItemFontSize(Number(e.target.value))}
+                  className="w-full cursor-pointer"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label
+                  htmlFor="ichikin-gap"
+                  className="text-sm font-medium leading-none select-none"
+                >
+                  一、金 の下の余白: {ichikinGap.toFixed(2)}em
+                </label>
+                <input
+                  id="ichikin-gap"
+                  type="range"
+                  min={-1}
+                  max={0.5}
+                  step={0.02}
+                  value={ichikinGap}
+                  onChange={(e) => setIchikinGap(Number(e.target.value))}
+                  className="w-full cursor-pointer"
+                />
+              </div>
+              <Button variant="outline" className="w-full" onClick={handleResetSizes}>
+                サイズ・字間をデフォルトに戻す
+              </Button>
             </div>
             <Button className="w-full" onClick={handlePrintClick}>
               印刷
