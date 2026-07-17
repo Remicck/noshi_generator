@@ -3,17 +3,27 @@ import '@/App.scss';
 import { Label } from '@/components/ui/label';
 import { ItemList, initialFormValue } from '@/const';
 import { ItemButton } from '@/components/ui/ItemButton';
-import { useState } from 'react';
 import { FormValue } from '@/type';
 import { Preview } from '@/components/Preview';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useLocalStorageState } from '@/lib/useLocalStorageState';
 
 function App() {
-  const [formValue, setFormValue] = useState<FormValue>(initialFormValue);
-  const [forceMincho, setForceMincho] = useState<boolean>(false);
-  const [disableSama, setDisableSama] = useState<boolean>(false);
-  const [disableBackground, setDisableBackground] = useState<boolean>(false);
+  // 設定値は localStorage に永続化し、リロードしても消えないようにする。
+  const [formValue, setFormValue] = useLocalStorageState<FormValue>('noshi:formValue', initialFormValue);
+  const [forceMincho, setForceMincho] = useLocalStorageState<boolean>('noshi:forceMincho', false);
+  const [disableSama, setDisableSama] = useLocalStorageState<boolean>('noshi:disableSama', false);
+  const [disableBackground, setDisableBackground] = useLocalStorageState<boolean>(
+    'noshi:disableBackground',
+    false
+  );
+  const [verticalNumber, setVerticalNumber] = useLocalStorageState<boolean>(
+    'noshi:verticalNumber',
+    false
+  );
+  const [nameFontSize, setNameFontSize] = useLocalStorageState<number>('noshi:nameFontSize', 10);
+  const [itemFontSize, setItemFontSize] = useLocalStorageState<number>('noshi:itemFontSize', 11);
   const handleChangeFormValue = (key: keyof FormValue, e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValue((prev) => ({ ...prev, [key]: e.target.value }));
   };
@@ -35,6 +45,9 @@ function App() {
               forceMincho={forceMincho}
               disableSama={disableSama}
               disableBackground={disableBackground}
+              verticalNumber={verticalNumber}
+              nameFontSize={nameFontSize}
+              itemFontSize={itemFontSize}
             />
           </div>
           {/* Right: Input */}
@@ -58,6 +71,7 @@ function App() {
               <div className="flex flex-row gap-2 mt-2">
                 <Checkbox
                   id="disable-sama-flg"
+                  checked={disableSama}
                   onCheckedChange={(checked: boolean) => {
                     setDisableSama(checked);
                   }}
@@ -94,6 +108,7 @@ function App() {
               <div className="flex flex-row gap-2">
                 <Checkbox
                   id="force-mincho-flg"
+                  checked={forceMincho}
                   onCheckedChange={(checked: boolean) => {
                     setForceMincho(checked);
                   }}
@@ -112,6 +127,7 @@ function App() {
               <div className="flex flex-row gap-2">
                 <Checkbox
                   id="disable-background-flg"
+                  checked={disableBackground}
                   onCheckedChange={(checked: boolean) => {
                     setDisableBackground(checked);
                   }}
@@ -122,6 +138,57 @@ function App() {
                 >
                   背景を印刷に含めない
                 </label>
+              </div>
+              <div className="flex flex-row gap-2">
+                <Checkbox
+                  id="vertical-number-flg"
+                  checked={verticalNumber}
+                  onCheckedChange={(checked: boolean) => {
+                    setVerticalNumber(checked);
+                  }}
+                />
+                <label
+                  htmlFor="vertical-number-flg"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
+                >
+                  半角数字を縦に並べる
+                </label>
+              </div>
+              <div className="flex flex-col gap-1">
+                <label
+                  htmlFor="name-font-size"
+                  className="text-sm font-medium leading-none select-none"
+                >
+                  名前の文字サイズ: {nameFontSize.toFixed(1)}rem
+                </label>
+                <input
+                  id="name-font-size"
+                  type="range"
+                  min={4}
+                  max={16}
+                  step={0.1}
+                  value={nameFontSize}
+                  onChange={(e) => setNameFontSize(Number(e.target.value))}
+                  className="w-full cursor-pointer"
+                />
+              </div>
+              <div className="flex flex-col gap-1">
+                <label
+                  htmlFor="item-font-size"
+                  className="text-sm font-medium leading-none select-none"
+                >
+                  納品の文字サイズ: {itemFontSize.toFixed(1)}rem
+                </label>
+                <input
+                  id="item-font-size"
+                  type="range"
+                  min={4}
+                  max={16}
+                  step={0.1}
+                  value={itemFontSize}
+                  onChange={(e) => setItemFontSize(Number(e.target.value))}
+                  className="w-full cursor-pointer"
+                />
               </div>
             </div>
             <Button className="w-full" onClick={handlePrintClick}>
