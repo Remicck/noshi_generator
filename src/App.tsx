@@ -11,15 +11,14 @@ import { useLocalStorageState } from '@/lib/useLocalStorageState';
 
 function App() {
   // 設定値は localStorage に永続化し、リロードしても消えないようにする。
-  const [formValue, setFormValue] = useLocalStorageState<FormValue>('noshi:formValue', initialFormValue);
+  const [formValue, setFormValue] = useLocalStorageState<FormValue>(
+    'noshi:formValue',
+    initialFormValue
+  );
   const [forceMincho, setForceMincho] = useLocalStorageState<boolean>('noshi:forceMincho', false);
   const [disableSama, setDisableSama] = useLocalStorageState<boolean>('noshi:disableSama', false);
   const [disableBackground, setDisableBackground] = useLocalStorageState<boolean>(
     'noshi:disableBackground',
-    false
-  );
-  const [verticalNumber, setVerticalNumber] = useLocalStorageState<boolean>(
-    'noshi:verticalNumber',
     false
   );
   const [nameFontSize, setNameFontSize] = useLocalStorageState<number>('noshi:nameFontSize', 10);
@@ -45,7 +44,6 @@ function App() {
               forceMincho={forceMincho}
               disableSama={disableSama}
               disableBackground={disableBackground}
-              verticalNumber={verticalNumber}
               nameFontSize={nameFontSize}
               itemFontSize={itemFontSize}
             />
@@ -137,21 +135,6 @@ function App() {
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
                 >
                   背景を印刷に含めない
-                </label>
-              </div>
-              <div className="flex flex-row gap-2">
-                <Checkbox
-                  id="vertical-number-flg"
-                  checked={verticalNumber}
-                  onCheckedChange={(checked: boolean) => {
-                    setVerticalNumber(checked);
-                  }}
-                />
-                <label
-                  htmlFor="vertical-number-flg"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer select-none"
-                >
-                  半角数字を縦に並べる
                 </label>
               </div>
               <div className="flex flex-col gap-1">

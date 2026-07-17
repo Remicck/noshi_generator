@@ -1,4 +1,4 @@
-export function ichikinFormat(str: string, verticalNumber = false): JSX.Element | string {
+export function ichikinFormat(str: string): JSX.Element | string {
   // strに '一金' が含まれている場合は
   if (str.includes('一、金')) {
     // 一金ぶぶんとそれ以外の部分で分ける
@@ -11,7 +11,7 @@ export function ichikinFormat(str: string, verticalNumber = false): JSX.Element 
         <span>一</span>
         <span className="my-[-0.44em]">、</span>
         <span className="mt-[-0.22em] mb-[0.22em]">金</span>
-        {formatNumber(other, verticalNumber)}
+        {formatNumber(other)}
       </>
     );
   }
@@ -23,23 +23,20 @@ export function ichikinFormat(str: string, verticalNumber = false): JSX.Element 
 // em 基準にしてフォントサイズに追従させる(接頭辞「一、金」は ichikinFormat 側で調整済み)。
 const NUMBER_TIGHTEN = '-0.1em';
 
-export function formatNumber(str: string, verticalNumber = false): JSX.Element {
-  // 半角数字の場合、通常は90度回転させて表示する。
-  // verticalNumber が true のときは回転させず直立で縦に積む。
+export function formatNumber(str: string): JSX.Element {
+  // 半角数字は90度回転させて表示する。
   return (
     <>
       {str.split('').map((char, index) => {
         const isDigit = !!char.match(/[0-9]/);
-        const rotate = isDigit && !verticalNumber;
         return (
           <span
             key={index}
             className="text-center"
             style={{
               // 回転する半角数字は回転補正の余白が要るため詰めない。それ以外は字間を詰める。
-              marginTop: rotate ? '0.25rem' : NUMBER_TIGHTEN,
-              transform: rotate ? 'rotate(-90deg)' : 'none',
-              textOrientation: isDigit && verticalNumber ? 'upright' : undefined,
+              marginTop: isDigit ? '0.25rem' : NUMBER_TIGHTEN,
+              transform: isDigit ? 'rotate(-90deg)' : 'none',
             }}
           >
             {char}
